@@ -1,0 +1,23 @@
+
+{    "name": "Python Conda 环境",
+    "image": "continuumio/miniconda3:latest",
+
+    // 👇 关键配置：让容器能访问宿主机端口
+    "extraHosts": [
+        "host.docker.internal:host-gateway"
+    ],
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.black-formatter"
+            ]
+        },
+        "settings": {
+                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+        }
+    },
+    "postCreateCommand": "conda run -n base pip install mysql-connector-python redis psycopg2-binary",
+    "remoteUser": "root"
+}
