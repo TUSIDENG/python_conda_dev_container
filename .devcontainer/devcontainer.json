@@ -10,7 +10,6 @@
     },
     "postCreateCommand": {
         "gitConfig": "git config --global --add safe.directory ${containerWorkspaceFolder}",
-        "conda": "conda run -n base pip install mysql-connector-python redis psycopg2-binary",
         "setup": "bash .devcontainer/setup.sh"
     },
     "customizations": {
