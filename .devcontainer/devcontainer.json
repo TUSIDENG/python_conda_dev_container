@@ -1,23 +1,19 @@
-
-{    "name": "Python Conda 环境",
+{
+    "name": "Python Conda 环境",
     "image": "continuumio/miniconda3:latest",
-
-    // 👇 关键配置：让容器能访问宿主机端口
-    "extraHosts": [
-        "host.docker.internal:host-gateway"
-    ],
-    
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-python.python",
-                "ms-python.black-formatter"
-            ]
-        },
-        "settings": {
-                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+    "mountWorkspaceGitRoot": false,
+    "extraHosts": ["host.docker.internal:host-gateway"],
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest"
         }
     },
-    "postCreateCommand": "conda run -n base pip install mysql-connector-python redis psycopg2-binary",
-    "remoteUser": "root"
+    "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && conda run -n base pip install mysql-connector-python redis psycopg2-binary",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "git.terminalAuthentication": true
+            }
+        }
+    }
 }
