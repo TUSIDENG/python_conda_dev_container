@@ -36,4 +36,5 @@ if __name__ == "__main__":
     print(f"\n  结果: {results}")
     print(f"  耗时: {elapsed:.2f}秒")
     print("✓ 进程池执行完成")
+    print("cpu密集型任务适合使用进程池来充分利用多核CPU的优势")
     print("=" * 50)
